@@ -9,3 +9,8 @@ Content-Type: "application/json"
     "detail": "เตาไมโครเวฟขนาด 23 ลิตร",
     "categoryId": "2"
   }
+
+
+####
+
+  GET http://localhost:3000/api/product?searchName=&categoryId=1&sortPrice=

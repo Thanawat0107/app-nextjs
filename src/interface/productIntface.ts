@@ -1,3 +1,5 @@
+import { CategoryData } from "./categoryIntface";
+
 export interface ProductData {
   id: string;
   name: string;
