@@ -1,12 +1,29 @@
+import { ProductParam } from "@/interface/productIntface";
 import { db } from "./db";
 
-const getProducts = async () => {
+const getProducts = async ({
+  searchName,
+  categoryId,
+  sortPrice,
+  
+}: ProductParam) => {
   return await db.product.findMany({
+    where: {
+      name: {
+        contains: searchName? searchName: undefined,
+      },
+      categoryId: {
+        equals: categoryId ? categoryId: undefined,
+      },
+    },
+    orderBy: {
+      price: sortPrice as any,
+    },
     include: {
       category: true,
-    },
-  });
-};
+    }
+  })
+}
 
 const getProduct = async (id: string) => {
  return await db.product.findUnique({
