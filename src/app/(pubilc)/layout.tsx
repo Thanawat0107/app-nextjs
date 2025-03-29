@@ -23,9 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <div>
-      <p>Navbae</p>
       {children}
-      <p>Footer</p>
     </div>
   );
 }
