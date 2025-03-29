@@ -8,10 +8,14 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { registerValidate } from "./registerValidate";
+import Swal from "sweetalert2";
+import { register } from "@/app/_actions/userAction";
+import { useRouter } from "next/navigation";
+
 
 export default function RegisterPage() {
   const [isHidePass, setisHidePass] = useState<boolean>(false);
-
+  const router = useRouter();
   const {
     control,
     handleSubmit,
@@ -22,19 +26,43 @@ export default function RegisterPage() {
       lastName: "",
       email: "",
       password: "",
-      age: 0,
+      age: "",
     },
 
     // resolver: zodResolver(registerValidate),
   });
 
-  const onSubmit = handleSubmit((value) => {
-    console.log("value", value);
+  const onSubmit = handleSubmit(async (value) => {
+    const result = await register(value as any);
+
+    if (result.success) {
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "สมัครสมาชิกสำเร็จ",
+        showConfirmButton: false,
+        timer: 1500,
+      }).then(() => {
+        router.push("/login");
+      });
+      return;
+    }
+
+    Swal.fire({
+      position: "center",
+      text: result.message,
+      icon: "error",
+      title: "สมัครสมาชิกไม่สำเร็จ",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+
+    return;
   });
 
   return (
     <div className="max-w-[30rem] m-auto">
-      <p className="text-center text-3x1 font-bold my-2">RegisterPage</p>
+      <p className="text-center text-3x1 font-bold my-2">สมัครสมาชิก</p>
       <form onSubmit={onSubmit} className="flex flex-col gap-3">
         <Controller
           control={control}
@@ -83,22 +111,22 @@ export default function RegisterPage() {
           name="password"
           render={({ field }) => (
             <TextField
-            {...field}
-            error={!!errors.password}
-            helperText={errors.password?.message ?? ""}
-            label="รหัสผ่าน"
-            type={isHidePass ? "text" : "password"}
-            variant="outlined"
-            slotProps={{
-              input: {
-                endAdornment: (
-                  <IconButton onClick={() => setisHidePass(!isHidePass)}>
-                    {isHidePass ? <VisibilityIcon /> : <VisibilityOffIcon />}
-                  </IconButton>
-                ),
-              },
-            }}
-          />
+              {...field}
+              error={!!errors.password}
+              helperText={errors.password?.message ?? ""}
+              label="รหัสผ่าน"
+              type={isHidePass ? "text" : "password"}
+              variant="outlined"
+              slotProps={{
+                input: {
+                  endAdornment: (
+                    <IconButton onClick={() => setisHidePass(!isHidePass)}>
+                      {isHidePass ? <VisibilityIcon /> : <VisibilityOffIcon />}
+                    </IconButton>
+                  ),
+                },
+              }}
+            />
           )}
         />
 
@@ -111,7 +139,6 @@ export default function RegisterPage() {
               error={!!errors.age}
               helperText={errors.age?.message ?? ""}
               label="อายุ"
-              type="number"
               variant="outlined"
             />
           )}

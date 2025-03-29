@@ -6,6 +6,6 @@ const metadata: Metadata = {
   description: "register page",
 };
 
-export default function Login() {
+export default function Reginster() {
   return <RegisterPage />;
 }

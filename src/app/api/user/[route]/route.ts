@@ -1,4 +1,4 @@
-import { userSevice } from "@/app/lib/user";
+import { userSevice } from "@/lib/user";
 import { ResponseService } from "@/interface/responseService";
 import { UserData } from "@/interface/userInterface";
 import { NextRequest, NextResponse } from "next/server";

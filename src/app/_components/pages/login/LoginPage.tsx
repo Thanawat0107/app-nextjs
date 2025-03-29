@@ -33,7 +33,7 @@ export default function LoginPage() {
 
   return (
     <div className="max-w-[30rem] m-auto">
-      <p className="text-center text-3x1 font-bold my-2">LoginPage</p>
+      <p className="text-center text-3x1 font-bold my-2">เข้าสู่ระบบ</p>
       <form onSubmit={onSubmit} className="flex flex-col gap-3">
         <Controller
           control={control}

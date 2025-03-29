@@ -1,4 +1,4 @@
-import { productService } from "@/app/lib/product";
+import { productService } from "@/lib/product";
 import { NextRequest, NextResponse } from "next/server";
 
 export const GET = async (
