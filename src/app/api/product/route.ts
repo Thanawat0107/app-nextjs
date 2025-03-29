@@ -2,7 +2,17 @@ import { productService } from "@/app/lib/product";
 import { NextRequest, NextResponse } from "next/server";
 
 export const GET = async (request: NextRequest) => {
-    const products = await productService.getProducts();
+    const searchParams = request.nextUrl.searchParams;
+
+    const searchName = searchParams.get("searchName") || undefined;
+    const categoryId = searchParams.get("categoryId") || undefined;
+    const sortPrice = searchParams.get("sortPrice") || "asc";
+
+    const products = await productService.getProducts({
+        searchName,
+        categoryId,
+        sortPrice,
+    });
 
     return NextResponse.json(products);
 };
