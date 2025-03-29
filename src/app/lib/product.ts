@@ -35,7 +35,7 @@ const updateProduct = async (id: string, data: any) => {
 };
 
 const deleteProduct = async (id: string) => {
-  return await db.product.deleteMany({
+  return await db.product.delete({
     where: {
       id,
     },
