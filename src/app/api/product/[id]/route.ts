@@ -1,7 +1,7 @@
 import { productService } from "@/app/lib/product";
 import { NextRequest, NextResponse } from "next/server";
 
-const GET = async (
+export const GET = async (
   request: NextRequest,
   context: { params: { id: string } }
 ) => {
@@ -11,7 +11,7 @@ const GET = async (
   return NextResponse.json(product);
 };
 
-const PUT = async (
+export const PUT = async (
   request: NextRequest,
   context: { params: { id: string } }
 ) => {
@@ -21,7 +21,7 @@ const PUT = async (
   return NextResponse.json(product);
 };
 
-const DELETE = async (
+export const DELETE = async (
   request: NextRequest,
   context: { params: { id: string } }
 ) => {
