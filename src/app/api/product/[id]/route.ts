@@ -16,7 +16,16 @@ const PUT = async (
   context: { params: { id: string } }
 ) => {
   const id = context?.params?.id ?? "";
+  const body = await request.json();
+  const product = await productService.updateProduct(id, body);
+  return NextResponse.json(product);
+};
 
-  const product = await productService.getProduct(id);
+const DELETE = async (
+  request: NextRequest,
+  context: { params: { id: string } }
+) => {
+  const id = context?.params?.id ?? "";
+  const product = await productService.deleteProduct(id);
   return NextResponse.json(product);
 };
