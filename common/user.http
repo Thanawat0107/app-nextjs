@@ -2,13 +2,15 @@ GET http://localhost:3000/api/user
 
 ###
 
-POST http://localhost:3000/api/user
+POST http://localhost:3000/api/user/register
 Content-Type: "application/json"
 
 {
-    "id": 1,
-    "name": "produc-testing77777",
-    "price": 100
+  "firsName": "asd",
+  "lastName": "abc",
+  "email": "asd@gmail.com",
+  "password": "123456",
+  "age": "12"
 }
 
 ###
