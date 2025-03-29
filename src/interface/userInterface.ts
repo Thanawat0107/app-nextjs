@@ -17,3 +17,11 @@ export interface LoginResponse {
   user: UserData;
   token: string;
 }
+
+export interface registerRequest {
+  firsName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  age: number;
+}
