@@ -10,3 +10,13 @@ const GET = async (
   const product = await productService.getProduct(id);
   return NextResponse.json(product);
 };
+
+const PUT = async (
+  request: NextRequest,
+  context: { params: { id: string } }
+) => {
+  const id = context?.params?.id ?? "";
+
+  const product = await productService.getProduct(id);
+  return NextResponse.json(product);
+};
