@@ -1,0 +1,29 @@
+BEGIN TRY
+
+BEGIN TRAN;
+
+-- CreateTable
+CREATE TABLE [dbo].[User] (
+    [id] NVARCHAR(1000) NOT NULL,
+    [firsName] NVARCHAR(1000) NOT NULL,
+    [lastName] NVARCHAR(1000) NOT NULL,
+    [email] NVARCHAR(1000) NOT NULL,
+    [passwordHash] NVARCHAR(1000) NOT NULL,
+    [age] INT NOT NULL,
+    [roleName] NVARCHAR(1000),
+    [roleCode] NVARCHAR(1000),
+    CONSTRAINT [User_pkey] PRIMARY KEY CLUSTERED ([id])
+);
+
+COMMIT TRAN;
+
+END TRY
+BEGIN CATCH
+
+IF @@TRANCOUNT > 0
+BEGIN
+    ROLLBACK TRAN;
+END;
+THROW
+
+END CATCH

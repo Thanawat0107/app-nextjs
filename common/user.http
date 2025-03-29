@@ -1,0 +1,34 @@
+GET http://localhost:3000/api/user
+
+###
+
+POST http://localhost:3000/api/user
+Content-Type: "application/json"
+
+{
+    "id": 1,
+    "name": "produc-testing77777",
+    "price": 100
+}
+
+###
+
+PUT http://localhost:3000/api/user/3
+Content-Type: "application/json"
+
+{
+    "id": 2,
+    "name": "produc-testing55555",
+    "price": 400
+}
+
+###
+
+DELETE http://localhost:3000/api/user/1
+Content-Type: "application/json"
+
+{
+    "id": 1,
+    "name": "produc-testing55555",
+    "price": 400
+}

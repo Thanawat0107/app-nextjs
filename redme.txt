@@ -1,0 +1,15 @@
+ติดตั้ง prisma
+yarn add prisma @prisma/client
+
+สร้างไฟล์ prisma/schema.prisma
+npx prisma init --datasource-provider sqlserver 
+
+สร้าง migrate file
+npx prisma migrate dev --name <ชือ>
+
+push migrate
+npx prisma db push
+
+npx prisma migrate dev --name CreateProductAndCategoty
+
+npx prisma migrate dev && npx tsx prisma/seed-category.ts
