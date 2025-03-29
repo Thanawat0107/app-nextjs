@@ -49,3 +49,9 @@ const register = async (data: registerRequest) => {
 
   return newUser;
 };
+
+export const userSevice = {
+  getUsers,
+  login,
+  register,
+};
