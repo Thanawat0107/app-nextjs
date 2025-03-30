@@ -38,3 +38,25 @@ export async function login(
   
     return result;
 }
+
+export async function fetchMembers(): Promise<ResponseService<UserData[]>> {
+  const result = await fetchInterceptor.get("/api/user");
+
+  return result;
+}
+
+export const getUser = async (): Promise<UserData | null> => {
+  const cookiesSession = await cookies()
+
+  const cookieData = cookiesSession.get(JWT_COOKIE)?.value ?? null;
+
+  return JSON.parse(cookieData || "{}").user as UserData;
+}
+
+export const logout = async (): Promise<string> => {
+  const cookiesSession = await cookies()
+
+  cookiesSession.delete(JWT_COOKIE);
+
+  return "OK";
+}

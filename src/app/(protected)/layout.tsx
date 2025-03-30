@@ -9,7 +9,9 @@ export default function layout({
   return (
     <section className="flex flex-col min-h-screen">
       <Header />
-      {children}
+      <main className="p-5 max-w-[70rem] mx-auto w-full">
+        {children}
+        </main>
       <Footer />
     </section>
   );
